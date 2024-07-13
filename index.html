@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 4 Solution</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding-top: 20px;
+      }
+      .container {
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Module 4 Solution</h1>
+      <button id="runScript" class="btn btn-primary">Run Script</button>
+      <div id="output" class="mt-4">
+        <h2>Output:</h2>
+        <ul id="outputList"></ul>
+      </div>
+    </div>
+
+    <script src="SpeakHello.js"></script>
+    <script src="SpeakGoodbye.js"></script>
+    <script>
+      document
+        .getElementById("runScript")
+        .addEventListener("click", function () {
+          var names = [
+            "Yaakov",
+            "John",
+            "Jen",
+            "Jason",
+            "Paul",
+            "Frank",
+            "Larry",
+            "Paula",
+            "Laura",
+            "Jim",
+          ];
+          var outputList = document.getElementById("outputList");
+          outputList.innerHTML = ""; // Clear previous output
+
+          for (var i = 0; i < names.length; i++) {
+            var firstLetter = names[i].charAt(0).toLowerCase();
+            var listItem = document.createElement("li");
+
+            if (firstLetter === "j") {
+              listItem.textContent = "Goodbye " + names[i];
+              byeSpeaker.speak(names[i]);
+            } else {
+              listItem.textContent = "Hello " + names[i];
+              helloSpeaker.speak(names[i]);
+            }
+
+            outputList.appendChild(listItem);
+          }
+        });
+    </script>
+  </body>
+</html>
